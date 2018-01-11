@@ -8,5 +8,5 @@ import com.flower.requests.AddFlowerRequest;
  * Created by geyu on 18-1-11.
  */
 public interface AllFlowerMapper extends MyRepository<AllFlower,Long> {
-       void save(AddFlowerRequest request);
+       AllFlower save(AddFlowerRequest request);
 }

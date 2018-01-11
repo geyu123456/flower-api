@@ -1,10 +1,8 @@
 package com.flower.requests;
 
+import com.sun.istack.internal.Nullable;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.data.annotation.Id;
-
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 /**
@@ -21,7 +19,7 @@ public class AddFlowerRequest {
     /**
      * 文字描述
      */
-
+    @Nullable
     private String content;
     /**
      * 单价
@@ -32,6 +30,7 @@ public class AddFlowerRequest {
     /**
      * 折扣
      */
+    @Nullable
     private BigDecimal   discount;
     /**
      * 花名
