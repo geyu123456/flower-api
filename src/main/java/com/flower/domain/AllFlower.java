@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  */
 @Data
 @Document
-public class TotalFlowers {
+public class AllFlower {
     /**
      * id
      */

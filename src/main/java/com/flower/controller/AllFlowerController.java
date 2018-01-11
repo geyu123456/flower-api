@@ -1,8 +1,8 @@
 package com.flower.controller;
 
-import com.flower.respones.ResponesResult;
-import com.flower.services.TotalFlowerService;
-import lombok.Value;
+import com.flower.requests.AddFlowerRequest;
+import com.flower.response.ResponseResult;
+import com.flower.services.AllFlowerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 @Slf4j
 @RequestMapping("/total")
-public class TotalFlowerController extends  BaseController {
+public class AllFlowerController extends  BaseController {
     @Autowired
-    private TotalFlowerService totalFlowerService;
+    private AllFlowerService allFlowerService;
 
 
     @RequestMapping(value = "/list",method = RequestMethod.POST)
@@ -28,8 +28,8 @@ public class TotalFlowerController extends  BaseController {
         return  modelAndView;
     }
     @RequestMapping(value = "/addFlower",method = RequestMethod.PUT)
-    public ResponesResult  addFlower(){
-       return totalFlowerService.addFlower();
+    public ResponseResult addFlower(AddFlowerRequest request){
+       return allFlowerService.addFlower(request);
     }
 
 

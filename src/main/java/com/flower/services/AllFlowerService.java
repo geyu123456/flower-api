@@ -1,6 +1,7 @@
 package com.flower.services;
 
-import com.flower.respones.ResponesResult;
+import com.flower.requests.AddFlowerRequest;
+import com.flower.response.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +10,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Slf4j
-public class TotalFlowerService {
-    public ResponesResult addFlower(){
+public class AllFlowerService {
+    public ResponseResult addFlower(AddFlowerRequest request){
 
-        return  ResponesResult.success("操作成功!");
+        return  ResponseResult.success("操作成功!");
     }
 }
