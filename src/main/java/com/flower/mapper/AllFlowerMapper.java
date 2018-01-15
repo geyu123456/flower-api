@@ -4,9 +4,12 @@ import com.flower.common.mongodb.MyRepository;
 import com.flower.domain.AllFlower;
 import com.flower.requests.AddFlowerRequest;
 
+import java.util.List;
+
 /**
  * Created by geyu on 18-1-11.
  */
 public interface AllFlowerMapper extends MyRepository<AllFlower,Long> {
-       AllFlower save(AddFlowerRequest request);
+       AllFlower save(AllFlower allFlower);
+       List<AllFlower> findAll();
 }

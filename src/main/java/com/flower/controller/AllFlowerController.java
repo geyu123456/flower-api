@@ -5,6 +5,7 @@ import com.flower.response.ResponseResult;
 import com.flower.services.AllFlowerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,8 @@ public class AllFlowerController extends  BaseController {
         return  modelAndView;
     }
     @RequestMapping(value = "/addFlower",method = RequestMethod.PUT)
-    public ResponseResult addFlower(AddFlowerRequest request){
+    public ResponseResult addFlower(@RequestBody AddFlowerRequest request){
+
        return allFlowerService.addFlower(request);
     }
 

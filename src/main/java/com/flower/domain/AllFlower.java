@@ -12,14 +12,13 @@ import java.math.BigDecimal;
  * Created by geyu on 18-1-11.
  */
 @Data
-@Document
+@Document(collection = "allflower")
 public class AllFlower {
     /**
      * id
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected long id;
+    private String  id;
     /**
      * 图片存放地址
      */

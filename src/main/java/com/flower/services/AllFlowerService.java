@@ -16,9 +16,16 @@ import org.springframework.stereotype.Service;
 public class AllFlowerService {
     @Autowired
     private AllFlowerMapper allFlowerMapper;
+
     public ResponseResult addFlower(AddFlowerRequest request){
-       AllFlower allFlower= allFlowerMapper.save(request);
-       if(0==allFlower.getId()){
+        AllFlower allFlower=new AllFlower();
+        allFlower.setPicUrl(request.getPicUrl());
+        allFlower.setContent(request.getContent());
+        allFlower.setPrice(request.getPrice());
+        allFlower.setTitle(request.getTitle());
+
+        allFlower=allFlowerMapper.save(allFlower);
+       if(null==allFlower.getId()){
            log.error("全部鲜花新增失败",request);
            return ResponseResult.fail("操作失败");
        }
