@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by geyu on 18-1-11.
  */
@@ -30,5 +32,13 @@ public class AllFlowerService {
            return ResponseResult.fail("操作失败");
        }
         return  ResponseResult.success("操作成功!");
+    }
+
+    public List<AllFlower> queryAllFlower() {
+        List<AllFlower> list= allFlowerMapper.findAll();
+        for(AllFlower allFlower: list){
+            allFlower.setRealPrice(allFlower.getPrice().multiply(allFlower.getDiscount()));
+        }
+        return list;
     }
 }

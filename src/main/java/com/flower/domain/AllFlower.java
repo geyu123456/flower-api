@@ -40,5 +40,10 @@ public class AllFlower {
      * 花名
      */
     private  String title;
+    /**
+     * 实际价格
+     */
+    private  BigDecimal realPrice;
+
 
 }
