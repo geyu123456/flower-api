@@ -31,7 +31,7 @@ public class AllFlowerController extends  BaseController {
     public ModelAndView   list(){
         ModelAndView modelAndView=new ModelAndView("/allFlowers");
         List<AllFlower> list=allFlowerService.queryAllFlower();
-        modelAndView.addObject(list);
+        modelAndView.addObject("list",list);
         return  modelAndView;
     }
 

@@ -30,7 +30,7 @@ public class AddFlowerRequest {
     /**
      * 折扣
      */
-    @Nullable
+    @NotEmpty(message = "折扣不能为空")
     private BigDecimal   discount;
     /**
      * 花名
