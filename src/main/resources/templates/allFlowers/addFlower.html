@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="add-comment styled boxed boxed-cream" id="addcomments">
+    <span class="add-comment-close">×</span>
+    <div class="add-comment-title gradient"><h3>Write a message</h3></div>
+    <div class="comment-form">
+        <form action="#" method="post" id="commentForm" class="ajax_form">
+            <div class="form-inner">
+                <div class="field_text">
+                    <label for="title" class="label_title">标题:</label>
+                    <input type="text" name="title" id="title" value=""  class="inputtext input_middle required" />
+                </div>
+                <div class="field_text">
+                    <label for="price" class="label_title">单价:</label>
+                    <input type="text" name="price" id="price" value=""  class="inputtext input_middle required" />
+                </div>
+                <div class="field_text">
+                    <label for="discount" class="label_title">折扣:</label>
+                    <input type="text" name="discount" id="discount" value=""  class="inputtext input_middle required" />
+                </div>
+                <div class="field_text">
+                    <label for="discount" class="label_title">颜色:</label>
+                    <input type="text" name="color" id="color" value=""  class="inputtext input_middle required" />
+                </div>
+                <div class="field_text">
+                    <label for="name" class="label_title">花名:</label>
+                    <input type="text" name="name" id="name" value=""  class="inputtext input_middle required" />
+                </div>
+                <div class="field_select">
+                    <label for="type" class="label_title">类型:</label>
+                    <select name="type" id="type" multiple="true" data-placeholder="Your Selection">
+                        <option value='1'>节日</option>
+                        <option value='2'>开业花篮</option>
+                        <option value='3'>婚庆</option>
+                        <option value='4'>特价</option>
+                    </select>
+                </div>
+                <div class="field_select">
+                    <label for="festival" class="label_title">节日:</label>
+                    <select name="contact_name" id="festival" multiple="true" data-placeholder="Your Selection">
+                        <option value='0'>日常</option>
+                        <option value='1'>情人节</option>
+                        <option value='2'>母亲节</option>
+                        <option value='3'>父亲节</option>
+                        <option value='4'>七夕节</option>
+                        <option value='5'>元旦</option>
+                        <option value='6'>春节</option>
+                    </select>
+                </div>
+
+                <div class="clear"></div>
+                <div class="field_text field_textarea">
+                    <div id="edit_buttons" class="edit_buttons gradient"></div>
+                    <label for="content" class="label_title">描述:</label>
+                    <textarea cols="30" rows="10" name="styled_message" id="content" class="textarea textarea_middle"></textarea>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="rowSubmit">
+                <a onclick="document.getElementById('commentForm').reset();return false" href="#" class="link-reset btn btn-white"><span>Discard</span></a>
+                <span class="btn"><input type="submit" id="send" value="Send" onclick="saveFlower()"/></span>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

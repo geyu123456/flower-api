@@ -29,10 +29,15 @@ public class AllFlowerController extends  BaseController {
 
     @RequestMapping(value = "/list")
     public ModelAndView   list(){
-        ModelAndView modelAndView=new ModelAndView("/allFlowers");
+        ModelAndView modelAndView=new ModelAndView("allFlowers/allFlowersList");
         List<AllFlower> list=allFlowerService.queryAllFlower();
         modelAndView.addObject("list",list);
         return  modelAndView;
+    }
+    @RequestMapping(value = "/addFlower" ,method = RequestMethod.GET)
+    public ResponseResult addFlower(@RequestBody AddFlowerRequest request){
+
+        return allFlowerService.addFlower(request);
     }
 
 

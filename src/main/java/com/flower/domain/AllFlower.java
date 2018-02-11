@@ -44,6 +44,23 @@ public class AllFlower {
      * 实际价格
      */
     private  BigDecimal realPrice;
+    /**
+     * 花名
+     */
+    private  String name;
+    /**
+     * 颜色
+     */
+    private  String color;
+    /**
+     * 0每日鲜花，1节日，2花篮，3婚庆，4特价
+     */
+    private  String type;
+    /**
+     * 0情人节，1妇女节，2母亲节，3父亲节，4七夕节，5元旦，6春节
+     */
+    private  String festival;
+
 
 
 }

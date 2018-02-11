@@ -1,0 +1,182 @@
+<!doctype html>
+
+<!--[if lt IE 7 ]><html xmlns:th="http://www.thymeleaf.org" lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]><html xmlns:th="http://www.thymeleaf.org" lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]><html xmlns:th="http://www.thymeleaf.org" lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]><html xmlns:th="http://www.thymeleaf.org" lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html xmlns:th="http://www.thymeleaf.org" lang="en" class="no-js" > <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title></title>
+
+    <!-- main JS libs -->
+    <script src="../../static/vanilla-cream-css/js/libs/modernizr.min.js" th:src="@{/vanilla-cream-css/js/libs/modernizr.min.js}"></script>
+    <script src="../../static/vanilla-cream-css/js/libs/jquery-1.10.0.js" th:src="@{/vanilla-cream-css/js/libs/jquery-1.10.0.js}"></script>
+    <script src="../../static/vanilla-cream-css/js/libs/jquery-ui.min.js" th:src="@{/vanilla-cream-css/js/libs/jquery-ui.min.js}"></script>
+    <script src="../../static/vanilla-cream-css/js/libs/bootstrap.min.js" th:src="@{/vanilla-cream-css/js/libs/bootstrap.min.js}"></script>
+    <script src="js/jquery.powerful-placeholder.min.js"></script>
+    <link rel="stylesheet" href="css/chosen.css"/>
+    <script src="js/jquery.chosen.min.js" type="text/javascript"></script>
+    <script src="js/nicEdit.js"></script>
+
+
+
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="../../static/vanilla-cream-css/css/bootstrap.css" th:href="@{/vanilla-cream-css/css/bootstrap.css}" />
+    <link rel="stylesheet" href="../../static/vanilla-cream-css/style.css" th:href="@{/vanilla-cream-css/style.css}"  />
+    <!-- scripts -->
+    <script src="../../static/vanilla-cream-css/js/general.js" th:src="@{/vanilla-cream-css/js/general.js}"></script>
+
+    <!-- Include all needed stylesheets and scripts here -->
+
+    <!--[if lt IE 9]>
+    <script src="../../static/vanilla-cream-css/js/respond.min.js"
+            th:src="@{/vanilla-cream-css/js/respond.min.js}"></script><![endif]-->
+
+    <script src="js/jquery.powerful-placeholder.min.js"></script>
+    <link rel="stylesheet" href="css/chosen.css"/>
+    <script src="js/jquery.chosen.min.js" type="text/javascript"></script>
+    <script src="js/nicEdit.js"></script>
+    <script type="text/javascript">
+
+        // Multiselect
+        jQuery(document).ready(function() {
+            jQuery('#contact_name').chosen({ width: "100%" });
+        });
+
+        // Text Editor
+        bkLib.onDomLoaded(function() {
+            var myNicEditor = new nicEditor({
+                buttonList : [
+                    'bold',
+                    'italic',
+                    'underline',
+                    'forecolor',
+                    'left',
+                    'center',
+                    'right',
+                    'justify'
+                ]
+            });
+            myNicEditor.setPanel('edit_buttons');
+            myNicEditor.addInstance('styled_message');
+        });
+        setTimeout(function () {
+            var nic_width = $('.nicEdit-panel').width();
+            $('.nicEdit-container').css('width', nic_width);
+            $('.nicEdit-main').css('width', nic_width-24);
+        }, 2000);
+        $(window).resize(function() {
+            var nic_width = $('.nicEdit-panel').width();
+            $('.nicEdit-container').css('width', nic_width);
+            $('.nicEdit-main').css('width', nic_width-24);
+        });
+
+    </script>
+    <script type="text/javascript"   th:src="@{/js/allFlower.js}"></script>
+
+    <style type="text/css">
+        .gradient {filter: none !important;
+        }
+        .dropdown > li a {
+            display: block;
+            color: #5d4f3e;
+            padding: 14px 53px;
+            font-size: 14px;
+        }
+    </style>
+
+</head>
+    <body style="background-image: none;">
+    <div class="body_wrap">
+        <div class="container">
+            <div class="alert alert-success text-center" role="alert">致爱丽丝</div>
+            <div id="topmenu">
+                <ul class="dropdown clearfix gradient">
+                    <li class="menu-level-0"><a href="#"><span>主页</span></a></li>
+                    <li class="menu-level-0"><a href="#"><span>全部鲜花</span></a>
+                    </li>
+                    <li class="menu-level-0"><a href="#"><span>每日花束</span></a></li>
+                    <li class="menu-level-0"><a href="#"><span>节日热卖</span></a></li>
+                    <li class="menu-level-0"><a href="#"><span>特价促销</span></a></li>
+
+                    <li class="menu-level-0"><a href="#"><span>统计</span></a></li>
+
+                </ul>
+            </div>
+            <div style="width: 100%;height: 50px" >
+                <div style="float: right;">
+                <a href="javascript:void(0)" class="btn btn-follow" ><span onclick="toAddFlower()">新增</span></a>
+                <a href="#" class="btn btn-search btn-green"><span>Search</span></a>
+                </div>
+            </div>
+
+        <table class="table table-striped table-bordered">
+            <tr>
+                <td>标题</td>
+                <td>内容</td>
+                <td>图片</td>
+                <td>单价</td>
+                <td>折扣</td>
+                <td>售价</td>
+                <td>操作</td>
+
+            </tr>
+            <!--/*@thymesVar id="learnList" type=""*/-->
+        <tr th:each="item : ${list}" class="text-info">
+            <td th:text="${item.title}"></td>
+            <td th:text="${item.content}"></td>
+            <td th:text="${item.picUrl}" ></td>
+            <td th:text="${item.price}"></td>
+            <td th:text="${item.discount}"></td>
+            <td th:text="${item.realPrice}" ></td>
+            <td><button th:text="保存"/></td>
+        </tr>
+    </table>
+</div>
+    </div>
+    <div class="add-comment styled boxed boxed-cream" hidden="hidden" id="addcomments">
+        <span class="add-comment-close">×</span>
+        <div class="add-comment-title gradient"><h3>Write a message</h3></div>
+        <div class="comment-form">
+            <form action="#" method="post" id="commentForm" class="ajax_form">
+                <div class="form-inner">
+                    <div class="field_select">
+                        <label for="contact_name" class="label_title">Name:</label>
+                        <select name="contact_name" id="contact_name"  data-placeholder="Your Selection">
+                            <option value='example1@gmail.com'>Mike Charley</option>
+                            <option value='example2@gmail.com'>Andy Lurs</option>
+                            <option value='example3@gmail.com'>Toby Lightman</option>
+                            <option value='example4@gmail.com'>Lene Marlin</option>
+                            <option value='example5@gmail.com'>Deep Purple</option>
+                        </select>
+                    </div>
+                    <div class="field_text">
+                        <label for="subject" class="label_title">Subject:</label>
+                        <input type="text" name="subject" id="subject" value="" placeholder="ex. Happy New Year!" class="inputtext input_middle required" />
+                    </div>
+                    <div class="clear"></div>
+                    <div class="field_text field_textarea">
+                        <div id="edit_buttons" class="edit_buttons gradient"></div>
+                        <label for="styled_message" class="label_title">Message:</label>
+                        <textarea cols="30" rows="10" name="styled_message" id="styled_message" class="textarea textarea_middle"></textarea>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="rowSubmit">
+                    <a onclick="document.getElementById('commentForm').reset();return false" href="#" class="link-reset btn btn-white"><span>Discard</span></a>
+                    <span class="btn"><input type="submit" id="send" value="Send" /></span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    </body>
+</html>
