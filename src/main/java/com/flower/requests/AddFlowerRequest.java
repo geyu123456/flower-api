@@ -37,6 +37,26 @@ public class AddFlowerRequest {
      */
     @NotEmpty(message = "标题不能为空")
     private  String title;
+    /**
+     * 颜色
+     */
+    @NotEmpty(message = "颜色不能为空")
+    private  String color;
+    /**
+     * 花名
+     */
+    @NotEmpty(message = "花名不能为空")
+    private  String  name;
+    /**
+     * 类型
+     */
+    @NotEmpty(message = "类型不能为空")
+    private  String type;
+    /**
+     * 节日
+     */
+    @NotEmpty(message = "节日不能为空")
+    private  String festival;
 
 
 }

@@ -45,7 +45,8 @@
 
         // Multiselect
         jQuery(document).ready(function() {
-            jQuery('#contact_name').chosen({ width: "100%" });
+            jQuery('#festival').chosen({ width: "100%" });
+            jQuery('#type').chosen({ width: "100%" });
         });
 
         // Text Editor
@@ -145,32 +146,68 @@
         <div class="comment-form">
             <form action="#" method="post" id="commentForm" class="ajax_form">
                 <div class="form-inner">
-                    <div class="field_select">
-                        <label for="contact_name" class="label_title">Name:</label>
-                        <select name="contact_name" id="contact_name"  data-placeholder="Your Selection">
-                            <option value='example1@gmail.com'>Mike Charley</option>
-                            <option value='example2@gmail.com'>Andy Lurs</option>
-                            <option value='example3@gmail.com'>Toby Lightman</option>
-                            <option value='example4@gmail.com'>Lene Marlin</option>
-                            <option value='example5@gmail.com'>Deep Purple</option>
-                        </select>
+                    <div class="field_text">
+                        <label for="title" class="label_title">标题:</label>
+                        <input type="text" name="title" id="title" value=""  class="inputtext input_middle required" />
                     </div>
                     <div class="field_text">
-                        <label for="subject" class="label_title">Subject:</label>
-                        <input type="text" name="subject" id="subject" value="" placeholder="ex. Happy New Year!" class="inputtext input_middle required" />
+                        <label for="price" class="label_title">单价:</label>
+                        <input type="text" name="price" id="price" value=""  class="inputtext input_middle required" />
                     </div>
+                    <div class="field_text">
+                        <label for="discount" class="label_title">折扣:</label>
+                        <input type="text" name="discount" id="discount" value=""  class="inputtext input_middle required" />
+                    </div>
+                    <div class="field_text">
+                        <label for="discount" class="label_title">颜色:</label>
+                        <input type="text" name="color" id="color" value=""  class="inputtext input_middle required" />
+                    </div>
+                    <div class="field_text">
+                        <label for="name" class="label_title">花名:</label>
+                        <input type="text" name="name" id="name" value=""  class="inputtext input_middle required" />
+                    </div>
+                    <div class="field_text">
+                        <label for="picUrl" class="label_title">图片:</label>
+                        <form enctype="multipart/form-data" method="post" action="/total/uploadimg">
+                            图片<input type="file" id="picUrl" name="file"/>
+                            <input type="submit" value="上传"/>
+                        </form>
+                       <!-- <input type="text" name="picUrl" id="picUrl" value=""  class="inputtext input_middle required" />-->
+                    </div>
+                    <div class="field_select">
+                        <label for="type" class="label_title">类型:</label>
+                        <select name="type" id="type" multiple="true" data-placeholder="Your Selection">
+                            <option value='1'>节日</option>
+                            <option value='2'>开业花篮</option>
+                            <option value='3'>婚庆</option>
+                            <option value='4'>特价</option>
+                        </select>
+                    </div>
+                    <div class="field_select">
+                        <label for="festival" class="label_title">节日:</label>
+                        <select name="festival" id="festival" multiple="true" data-placeholder="Your Selection">
+                            <option value='0'>日常</option>
+                            <option value='1'>情人节</option>
+                            <option value='2'>母亲节</option>
+                            <option value='3'>父亲节</option>
+                            <option value='4'>七夕节</option>
+                            <option value='5'>元旦</option>
+                            <option value='6'>春节</option>
+                        </select>
+                    </div>
+
                     <div class="clear"></div>
                     <div class="field_text field_textarea">
                         <div id="edit_buttons" class="edit_buttons gradient"></div>
-                        <label for="styled_message" class="label_title">Message:</label>
-                        <textarea cols="30" rows="10" name="styled_message" id="styled_message" class="textarea textarea_middle"></textarea>
+                        <label for="content" class="label_title">描述:</label>
+                        <textarea cols="30" rows="10" name="styled_message" id="content" class="textarea textarea_middle"></textarea>
                     </div>
                     <div class="clear"></div>
                 </div>
 
                 <div class="rowSubmit">
                     <a onclick="document.getElementById('commentForm').reset();return false" href="#" class="link-reset btn btn-white"><span>Discard</span></a>
-                    <span class="btn"><input type="submit" id="send" value="Send" /></span>
+                    <span class="btn"><input type="submit" id="send" value="Send" onclick="saveFlower()"/></span>
                 </div>
             </form>
         </div>

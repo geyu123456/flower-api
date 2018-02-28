@@ -25,6 +25,11 @@ public class AllFlowerService {
         allFlower.setContent(request.getContent());
         allFlower.setPrice(request.getPrice());
         allFlower.setTitle(request.getTitle());
+        allFlower.setDiscount(request.getDiscount());
+        allFlower.setColor(request.getColor());
+        allFlower.setFestival(request.getFestival());
+        allFlower.setName(request.getName());
+        allFlower.setType(request.getType());
 
         allFlower=allFlowerMapper.save(allFlower);
        if(null==allFlower.getId()){
