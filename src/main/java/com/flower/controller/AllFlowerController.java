@@ -9,11 +9,14 @@ import com.flower.services.AllFlowerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -36,7 +39,18 @@ public class AllFlowerController extends  BaseController {
         return  modelAndView;
     }
     @RequestMapping(value = "/addFlower" ,method = RequestMethod.POST)
-    public ResponseResult addFlower(@RequestBody AddFlowerRequest request){
+    @ResponseBody
+    public ResponseResult addFlower(AddFlowerRequest request){
+        if(request.getFile() != null){
+            String fileName = request.getFile().getOriginalFilename();
+            String filePath = "/tmp/";
+            try {
+                FileCopyUtils.copy(request.getFile().getInputStream(),new FileOutputStream(filePath+fileName));
+                request.setPicUrl(filePath+fileName);
+            } catch (IOException e) {
+                log.error("上传失败",e);
+            }
+        }
 
         return allFlowerService.addFlower(request);
     }

@@ -14,31 +14,16 @@ function  toAddFlower() {
 
 
 function saveFlower() {
-        var title=$("#title").val();
-        var color=$("#color").val();
-        var content=$("#content").val();
-        var name=$("#name").val();
-        var type=$("#type").val()[0];
-        var price=$("#price").val();
-        var picUrl="asdasass";
-
-        var festival=$("#festival").val()[0];
-        var discount=$("#discount").val();
-        var data={"title":title,"color":color,"content":content,"name":name,"type":type,"festival":festival,
-        "discount":discount,"price":price,"picUrl":picUrl};
+        var form = new FormData(document.getElementById("commentForm"));
         var url=contentPath+"/total/addFlower";
     $.ajax({
         type:"POST",
         url:url,
-        processData: false,
-        contentType: "application/json;charset=utf-8",
-        dataType: "json",
-        data:JSON.stringify(data),
+        data:form,
+        processData:false,
+        contentType:false,
         success:function(msg){
             alert(msg);
         }
     })
-
-
-
 }

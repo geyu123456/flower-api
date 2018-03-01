@@ -2,6 +2,8 @@ package com.flower.requests;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.math.BigDecimal;
 
 /**
@@ -15,6 +17,12 @@ public class AddFlowerRequest {
      */
     @NotEmpty(message = "必须上传一张图片")
     private  String picUrl;
+
+    /**
+     * 接收图片文件
+     */
+    private MultipartFile file;
+
     /**
      * 文字描述
      */
