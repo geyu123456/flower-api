@@ -43,7 +43,7 @@ public class AllFlowerController extends  BaseController {
     public ResponseResult addFlower(AddFlowerRequest request){
         if(request.getFile() != null){
             String fileName = request.getFile().getOriginalFilename();
-            String filePath = "/tmp/";
+            String filePath = "E:\\imgDownload\\";
             try {
                 FileCopyUtils.copy(request.getFile().getInputStream(),new FileOutputStream(filePath+fileName));
                 request.setPicUrl(filePath+fileName);

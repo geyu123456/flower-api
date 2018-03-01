@@ -135,7 +135,7 @@
             <td th:text="${item.price}"></td>
             <td th:text="${item.discount}"></td>
             <td th:text="${item.realPrice}" ></td>
-            <td><button th:text="保存"/></td>
+            <td><button th:text="删除" onclick="deleteFlower()"/></td>
         </tr>
     </table>
 </div>
@@ -168,12 +168,12 @@
                     </div>
                     <div class="field_text">
                         <label for="picUrl" class="label_title">图片:</label>
-                        <input type="file" id="picUrl" name="file"/>
+                        <input type="file" id="picUrl" name="picUrl"/>
                        <!-- <input type="text" name="picUrl" id="picUrl" value=""  class="inputtext input_middle required" />-->
                     </div>
                     <div class="field_select">
                         <label for="type" class="label_title">类型:</label>
-                        <select name="type" id="type" multiple="true" data-placeholder="Your Selection">
+                        <select name="type" id="type"  data-placeholder="Your Selection">
                             <option value='1'>节日</option>
                             <option value='2'>开业花篮</option>
                             <option value='3'>婚庆</option>
@@ -182,7 +182,7 @@
                     </div>
                     <div class="field_select">
                         <label for="festival" class="label_title">节日:</label>
-                        <select name="festival" id="festival" multiple="true" data-placeholder="Your Selection">
+                        <select name="festival" id="festival"  data-placeholder="Your Selection">
                             <option value='0'>日常</option>
                             <option value='1'>情人节</option>
                             <option value='2'>母亲节</option>
@@ -204,7 +204,7 @@
 
                 <div class="rowSubmit">
                     <a onclick="document.getElementById('commentForm').reset();return false" href="#" class="link-reset btn btn-white"><span>Discard</span></a>
-                    <span class="btn"><input type="submit" id="send" value="Send" onclick="saveFlower()"/></span>
+                    <span class="btn"><input type="button" id="send" value="Send" onclick="saveFlower()"/></span>
                 </div>
             </form>
         </div>

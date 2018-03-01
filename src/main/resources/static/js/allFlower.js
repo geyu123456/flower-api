@@ -22,8 +22,9 @@ function saveFlower() {
         data:form,
         processData:false,
         contentType:false,
-        success:function(msg){
-            alert(msg);
+        success:function(obj){
+
+            alert(obj.message);
         }
     })
 }
