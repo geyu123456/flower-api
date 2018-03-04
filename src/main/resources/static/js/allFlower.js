@@ -28,3 +28,7 @@ function saveFlower() {
         }
     })
 }
+function  deleteFlower(id) {
+    alert(id)
+
+}

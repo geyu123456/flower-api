@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,7 +43,10 @@ public class AllFlowerController extends  BaseController {
     @ResponseBody
     public ResponseResult addFlower(AddFlowerRequest request){
         if(request.getFile() != null){
-            String fileName = request.getFile().getOriginalFilename();
+            //String fileName = request.getFile().getOriginalFilename();
+            String []lastName=request.getFile().getOriginalFilename().split("\\.");
+            Date date=new Date();
+            String fileName=String.valueOf(date.getTime()/1000)+"."+lastName[1];
             String filePath = "E:\\imgDownload\\";
             try {
                 FileCopyUtils.copy(request.getFile().getInputStream(),new FileOutputStream(filePath+fileName));
@@ -53,29 +57,6 @@ public class AllFlowerController extends  BaseController {
         }
 
         return allFlowerService.addFlower(request);
-    }
-    //处理文件上传
-    @RequestMapping(value="/uploadimg", method = RequestMethod.POST)
-    public @ResponseBody    ResponseResult uploadImg(@RequestParam("file") MultipartFile file,
-                     HttpServletRequest request) {
-        String contentType = file.getContentType();
-        String fileName = file.getOriginalFilename();
-        /*System.out.println("fileName-->" + fileName);
-        System.out.println("getContentType-->" + contentType);*/
-        String filePath = request.getSession().getServletContext().getRealPath("imgupload/");
-        ResponseResult result=new ResponseResult();
-
-        try {
-            FileUtil.uploadFile(file.getBytes(), filePath, fileName);
-            result.setCode("0");
-            result.setMessage("上传成功");
-        } catch (Exception e) {
-            result.setCode("1");
-            result.setMessage("上传失败");
-            // TODO: handle exception
-        }
-        //返回json
-        return result;
     }
 
 
