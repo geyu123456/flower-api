@@ -135,7 +135,7 @@
             <td th:text="${item.price}"></td>
             <td th:text="${item.discount}"></td>
             <td th:text="${item.realPrice}" ></td>
-            <td><button th:text="删除" onclick="deleteFlower(${item.id})"/></td>
+            <td><button  th:onclick="'javascript:deleteFlower('+${item.id}+');'"></button></td>
         </tr>
     </table>
 </div>
@@ -168,7 +168,7 @@
                     </div>
                     <div class="field_text">
                         <label for="picUrl" class="label_title">图片:</label>
-                        <input type="file" id="picUrl" name="picUrl"/>
+                        <input type="file" id="picUrl" name="file"/>
                        <!-- <input type="text" name="picUrl" id="picUrl" value=""  class="inputtext input_middle required" />-->
                     </div>
                     <div class="field_select">
