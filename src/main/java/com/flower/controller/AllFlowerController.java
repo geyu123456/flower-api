@@ -39,6 +39,12 @@ public class AllFlowerController extends  BaseController {
         modelAndView.addObject("list",list);
         return  modelAndView;
     }
+
+    /**
+     * 新增鲜花
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/addFlower" ,method = RequestMethod.POST)
     @ResponseBody
     public ResponseResult addFlower(AddFlowerRequest request){
@@ -59,12 +65,16 @@ public class AllFlowerController extends  BaseController {
         return allFlowerService.addFlower(request);
     }
 
+    public ResponseResult deleteFlower(){
+
+    }
+
     /**
      * 文件下载
      * @param res
      */
     @RequestMapping(value = "/downloadImg", method = RequestMethod.GET)
-    public void testDownload(HttpServletResponse res) {
+    public String downloadImg(HttpServletResponse res,@RequestParam String picUrl) {
         String fileName = "upload.jpg";
         res.setHeader("content-type", "application/octet-stream");
         res.setContentType("application/octet-stream");
@@ -74,8 +84,7 @@ public class AllFlowerController extends  BaseController {
         OutputStream os = null;
         try {
             os = res.getOutputStream();
-            bis = new BufferedInputStream(new FileInputStream(new File("d://"
-                    + fileName)));
+            bis = new BufferedInputStream(new FileInputStream(new File(picUrl)));
             int i = bis.read(buff);
             while (i != -1) {
                 os.write(buff, 0, buff.length);
@@ -93,7 +102,7 @@ public class AllFlowerController extends  BaseController {
                 }
             }
         }
-        System.out.println("success");
+        return null;
     }
 
 
