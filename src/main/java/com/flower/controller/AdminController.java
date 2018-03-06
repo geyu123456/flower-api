@@ -1,6 +1,6 @@
 package com.flower.controller;
 
-import com.flower.requests.AddFlowerRequest;
+import com.flower.requests.FlowerRequest;
 import com.flower.response.ResponseResult;
 import com.flower.services.AllFlowerService;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ public class AdminController extends  BaseController {
     private AllFlowerService allFlowerService;
 
     @RequestMapping(value = "/addFlower" ,method = RequestMethod.PUT)
-    public ResponseResult addFlower(@RequestBody AddFlowerRequest request){
+    public ResponseResult addFlower(@RequestBody FlowerRequest request){
 
         return allFlowerService.addFlower(request);
     }

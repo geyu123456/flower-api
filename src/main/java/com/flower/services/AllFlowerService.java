@@ -2,7 +2,7 @@ package com.flower.services;
 
 import com.flower.domain.AllFlower;
 import com.flower.mapper.AllFlowerMapper;
-import com.flower.requests.AddFlowerRequest;
+import com.flower.requests.FlowerRequest;
 import com.flower.response.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class AllFlowerService {
     @Autowired
     private AllFlowerMapper allFlowerMapper;
 
-    public ResponseResult addFlower(AddFlowerRequest request){
+    public ResponseResult addFlower(FlowerRequest request){
         AllFlower allFlower=new AllFlower();
         allFlower.setPicUrl(request.getPicUrl());
         allFlower.setContent(request.getContent());
@@ -44,6 +44,16 @@ public class AllFlowerService {
         for(AllFlower allFlower: list){
             allFlower.setRealPrice(allFlower.getPrice().multiply(allFlower.getDiscount()));
         }
+        return list;
+    }
+
+    public void deleteFlower(String id) {
+        allFlowerMapper.deleteById(id);
+
+    }
+
+    public List<AllFlower> queryFestival(String festival) {
+        List<AllFlower> list=allFlowerMapper.findByFestival(festival);
         return list;
     }
 }

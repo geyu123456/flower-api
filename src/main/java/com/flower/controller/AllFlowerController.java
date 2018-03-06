@@ -1,9 +1,8 @@
 package com.flower.controller;
 
 
-import com.flower.common.util.FileUtil;
 import com.flower.domain.AllFlower;
-import com.flower.requests.AddFlowerRequest;
+import com.flower.requests.FlowerRequest;
 import com.flower.response.ResponseResult;
 import com.flower.services.AllFlowerService;
 import lombok.extern.slf4j.Slf4j;
@@ -11,10 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.Date;
@@ -39,6 +36,14 @@ public class AllFlowerController extends  BaseController {
         modelAndView.addObject("list",list);
         return  modelAndView;
     }
+    @RequestMapping(value = "/festivalList")
+    public  ModelAndView festivalList(@RequestParam String festival){
+        ModelAndView modelAndView=new ModelAndView("allFlowers/allFlowersList");
+        List<AllFlower> list=allFlowerService.queryFestival(festival);
+        modelAndView.addObject("list",list);
+        return  modelAndView;
+
+    }
 
     /**
      * 新增鲜花
@@ -47,7 +52,7 @@ public class AllFlowerController extends  BaseController {
      */
     @RequestMapping(value = "/addFlower" ,method = RequestMethod.POST)
     @ResponseBody
-    public ResponseResult addFlower(AddFlowerRequest request){
+    public ResponseResult addFlower(FlowerRequest request){
         if(request.getFile() != null){
             //String fileName = request.getFile().getOriginalFilename();
             String []lastName=request.getFile().getOriginalFilename().split("\\.");
@@ -65,7 +70,15 @@ public class AllFlowerController extends  BaseController {
         return allFlowerService.addFlower(request);
     }
 
-    public ResponseResult deleteFlower(){
+    /**
+     * 删除鲜花
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/deleteFlower/{id}",method = RequestMethod.GET)
+    public ModelAndView deleteFlower(@PathVariable("id")String id){
+          allFlowerService.deleteFlower(id);
+          return  list();
 
     }
 

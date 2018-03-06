@@ -98,12 +98,12 @@
             <div class="alert alert-success text-center" role="alert">致爱丽丝</div>
             <div id="topmenu">
                 <ul class="dropdown clearfix gradient">
-                    <li class="menu-level-0"><a href="#"><span>主页</span></a></li>
-                    <li class="menu-level-0"><a href="#"><span>全部鲜花</span></a>
+                    <li class="menu-level-0"><a th:href="@{/total/list}"><span>主页</span></a></li>
+                    <li class="menu-level-0"><a th:href="@{/total/list}"><span>全部鲜花</span></a>
                     </li>
-                    <li class="menu-level-0"><a href="#"><span>每日花束</span></a></li>
-                    <li class="menu-level-0"><a href="#"><span>节日热卖</span></a></li>
-                    <li class="menu-level-0"><a href="#"><span>特价促销</span></a></li>
+                    <li class="menu-level-0"><a th:href="@{/total/festivalList(festival='0')}"><span>每日花束</span></a></li>
+                    <li class="menu-level-0"><a th:href="@{/total/festivalList(festival='0')}"><span>节日热卖</span></a></li>
+                    <li class="menu-level-0"><a th:href="@{/total/festivalList(festival='0')}"><span>特价促销</span></a></li>
 
                     <li class="menu-level-0"><a href="#"><span>统计</span></a></li>
 
@@ -136,7 +136,7 @@
             <td th:text="${item.discount}"></td>
             <td th:text="${item.realPrice}" ></td>
             <td>
-                <a href="javascript:void(0)" class="btn btn-follow" ><span onclick="javascript:deleteFlower('+${item.id}+');">删除</span></a>
+                <a th:href="@{/total/deleteFlower/${item.id}}" class="btn btn-follow" ><span >删除</span></a>
                </td>
         </tr>
     </table>

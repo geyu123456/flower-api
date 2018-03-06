@@ -10,7 +10,8 @@ import java.math.BigDecimal;
  * Created by geyu on 18-1-11.
  */
 @Data
-public class AddFlowerRequest {
+public class FlowerRequest {
+    private  String id;
 
     /**
      * 图片存放地址
