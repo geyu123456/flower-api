@@ -7,6 +7,7 @@ import com.flower.response.ResponseResult;
 import com.flower.services.AllFlowerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,8 @@ import java.util.List;
 public class AllFlowerController extends  BaseController {
     @Autowired
     private AllFlowerService allFlowerService;
+    @Value("${picUrl}")
+    private  String  filePath;
 
 
     @RequestMapping(value = "/list")
@@ -58,7 +61,7 @@ public class AllFlowerController extends  BaseController {
             String []lastName=request.getFile().getOriginalFilename().split("\\.");
             Date date=new Date();
             String fileName=String.valueOf(date.getTime()/1000)+"."+lastName[1];
-            String filePath = "D:\\imgDownload\\";
+
             try {
                 FileCopyUtils.copy(request.getFile().getInputStream(),new FileOutputStream(filePath+fileName));
                 request.setPicUrl(filePath+fileName);
