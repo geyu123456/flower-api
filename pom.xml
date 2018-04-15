@@ -57,13 +57,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>3.3.1.GA</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
+
 
 	</dependencies>
 
