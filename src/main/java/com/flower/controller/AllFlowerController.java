@@ -27,6 +27,14 @@ import java.util.List;
 public class AllFlowerController extends  BaseController {
     @Autowired
     private AllFlowerService allFlowerService;
+    @RequestMapping(value = "/testQuery",method = RequestMethod.GET)
+    @ResponseBody
+    public  List<AllFlower>  testQuery(){
+        List<AllFlower> list=allFlowerService.queryAllFlower();
+        return  list;
+
+
+    }
 
 
     @RequestMapping(value = "/list")
@@ -75,8 +83,8 @@ public class AllFlowerController extends  BaseController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/deleteFlower/{id}",method = RequestMethod.GET)
-    public ModelAndView deleteFlower(@PathVariable("id")String id){
+    @RequestMapping(value = "/deleteFlower",method = RequestMethod.GET)
+    public ModelAndView deleteFlower(@RequestParam String id){
           allFlowerService.deleteFlower(id);
           return  list();
 

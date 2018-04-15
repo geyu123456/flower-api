@@ -5,15 +5,13 @@ import com.flower.response.ResponseResult;
 import com.flower.services.AllFlowerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by geyu on 18-1-29.
  */
-@RestController
+@Controller
 @Slf4j
 @RequestMapping("/admin")
 public class AdminController extends  BaseController {
@@ -24,5 +22,14 @@ public class AdminController extends  BaseController {
     public ResponseResult addFlower(@RequestBody FlowerRequest request){
 
         return allFlowerService.addFlower(request);
+    }
+
+    @GetMapping( "/login")
+    public  String login(){
+        return  "/login";
+    }
+    @GetMapping("/403")
+    public String error403() {
+        return "/error/403";
     }
 }
