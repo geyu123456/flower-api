@@ -1,8 +1,8 @@
-package com.flower.controller;
+package com.flower.allFlowers.controller;
 
-import com.flower.requests.FlowerRequest;
-import com.flower.response.ResponseResult;
-import com.flower.services.AllFlowerService;
+import com.flower.allFlowers.model.FlowerRequest;
+import com.flower.allFlowers.model.ResponseResult;
+import com.flower.allFlowers.services.AllFlowerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

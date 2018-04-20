@@ -1,4 +1,4 @@
-package com.flower.domain;
+package com.flower.allFlowers.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

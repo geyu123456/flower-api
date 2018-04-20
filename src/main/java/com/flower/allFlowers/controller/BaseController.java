@@ -1,4 +1,4 @@
-package com.flower.controller;
+package com.flower.allFlowers.controller;
 
 /**
  * Created by geyu on 18-1-11.

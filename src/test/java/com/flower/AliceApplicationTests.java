@@ -1,6 +1,6 @@
 package com.flower;
 
-import com.flower.domain.AllFlower;
+import com.flower.allFlowers.model.AllFlower;
 import com.flower.mapper.AllFlowerMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,7 +1,7 @@
 package com.flower.mapper;
 
 import com.flower.common.mongodb.MyRepository;
-import com.flower.domain.AllFlower;
+import com.flower.allFlowers.model.AllFlower;
 
 import java.util.List;
 

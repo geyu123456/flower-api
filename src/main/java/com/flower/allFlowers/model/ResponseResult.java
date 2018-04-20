@@ -1,4 +1,4 @@
-package com.flower.response;
+package com.flower.allFlowers.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

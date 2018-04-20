@@ -1,4 +1,4 @@
-package com.flower.requests;
+package com.flower.allFlowers.model;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
