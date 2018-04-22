@@ -8,7 +8,8 @@ import java.util.List;
 @Data
 @Document(collection = "user")
 public class User  {
-    private  long id;
+    private  String id;
+    private  String username;
     private  String account;
     private  String password;
     private  boolean enabled;

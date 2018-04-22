@@ -1,20 +1,21 @@
 package com.flower.common.config.Security;
 
+import com.flower.User.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class JwtUser implements UserDetails {
+public class JwtUser  implements UserDetails {
     private final  String id;
-    private  final String name;
+    private  final String account;
     private  final  String password;
     private final Collection<? extends GrantedAuthority> authorities;
 
 
-    JwtUser(String id, String name, String password, Collection<? extends GrantedAuthority> authorities){
+    JwtUser(String id, String account, String password, Collection<? extends GrantedAuthority> authorities){
         this.id=id;
-        this.name=name;
+        this.account=account;
         this.password=password;
         this.authorities = authorities;
     }
@@ -33,7 +34,7 @@ public class JwtUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return name;
+        return account;
     }
 
     /**

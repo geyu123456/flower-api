@@ -4,5 +4,5 @@ import com.flower.User.model.User;
 import com.flower.common.mongodb.MyRepository;
 
 public interface UserMapper extends MyRepository<User,Long> {
-    User findByAccount();
+    User findByAccount(String account);
 }
