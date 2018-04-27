@@ -20,25 +20,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected  void configure(HttpSecurity http) throws  Exception{
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/","/admin","/total").permitAll()
+                .antMatchers("/","/admin").permitAll()
+                .antMatchers("/total").access("hasRole('admin')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/admin/login")
+                //定义登录页面
+                .loginPage("/login")
+                .usernameParameter("username").passwordParameter("password")
                 .permitAll()
                 .and()
                 .logout()
                 .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("user").password("user").roles("USER")
-                .and()
-                .withUser("admin").password("admin").roles("ADMIN");
+                .withUser("admin").password("123456").roles("admin");
     }
+
+
   @Autowired
   private UserDetailsService userDetailsService;
 
