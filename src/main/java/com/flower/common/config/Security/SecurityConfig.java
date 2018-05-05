@@ -26,9 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 //定义登录页面
-                .loginPage("/login")
-                .usernameParameter("username").passwordParameter("password")
-                .permitAll()
+                .loginPage("/login").permitAll()
+                .defaultSuccessUrl("/total/list",true)
                 .and()
                 .logout()
                 .and()
