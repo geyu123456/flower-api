@@ -21,17 +21,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/","/admin").permitAll()
-                .antMatchers("/total").access("hasRole('admin')")
+                .antMatchers("/total/**").access("hasRole('admin')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 //定义登录页面
-                .loginPage("/login").permitAll()
+                .loginPage("/admin/login").permitAll()
                 .defaultSuccessUrl("/total/list",true)
                 .and()
                 .logout()
                 .and()
-                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+                /*.exceptionHandling().accessDeniedHandler(accessDeniedHandler)*/;
     }
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

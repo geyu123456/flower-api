@@ -1,5 +1,6 @@
 package com.flower.allFlowers.controller;
 
+import com.flower.User.model.User;
 import com.flower.User.service.IUserService;
 import com.flower.allFlowers.model.FlowerRequest;
 import com.flower.allFlowers.model.ResponseResult;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by geyu on 18-1-29.
@@ -24,18 +26,32 @@ public class AdminController extends  BaseController {
     @Autowired
     private IUserService userService;
 
+
+
     @RequestMapping(value = "/addFlower" ,method = RequestMethod.PUT)
     public ResponseResult addFlower(@RequestBody FlowerRequest request){
 
         return allFlowerService.addFlower(request);
     }
 
-    @RequestMapping(value="/login",method = RequestMethod.POST)
+    @RequestMapping(value = "findAllUser",method = RequestMethod.GET)
+    @ResponseBody
+    public List<User> findAllUser(){
+        return userService.findAllUser();
+
+
+
+    }
+
+    @RequestMapping(value="/login",method = RequestMethod.GET)
     public ModelAndView  login(@RequestParam(value = "username") String account,
                                @RequestParam(value = "password") String password){
         ResponseResult result=userService.login(account,password);
         if(result.getCode().equals("0")){
-            return  new ModelAndView("/total/list");
+
+            ModelAndView modelAndView=  new ModelAndView("/total/list");
+            modelAndView.addObject(allFlowerService.queryAllFlower());
+            return  modelAndView;
         }else {
             ModelAndView modelAndView=new ModelAndView("/login");
             modelAndView.addObject("param","error");
@@ -46,10 +62,10 @@ public class AdminController extends  BaseController {
 
     }
 
-    @GetMapping( "/login")
+    /*@GetMapping( "/login")
     public  String login(){
         return  "/login";
-    }
+    }*/
     @GetMapping("/403")
     public String error403() {
         return "/error/403";

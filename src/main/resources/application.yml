@@ -1,13 +1,14 @@
-picUrl="/opt/pictures"
+
  spring:
    data:
      mongodb:
        host: 127.0.0.1
        database: local
+       port: 27017
    http:
      multipart:
        max-file-size: 100Mb
        max-request-size: 100Mb
-server:
-  context-path: /alice
+
+
 
