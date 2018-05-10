@@ -13,8 +13,12 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
-    private AccessDeniedHandler accessDeniedHandler;
+    private  MyAuthenticationFailHandler authenticationFailHandler;
+    @Autowired
+    private  MyAuthenticationSuccessHandler authenticationSuccessHandler;
+
 
     @Override
     protected  void configure(HttpSecurity http) throws  Exception{
@@ -26,12 +30,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 //定义登录页面
-                .loginPage("/admin/login").permitAll()
-                .defaultSuccessUrl("/total/list",true)
+                .loginPage("/admin/toLogin").permitAll()
+                .loginProcessingUrl("/admin/login")
+                .defaultSuccessUrl("/total/list")
+                .failureForwardUrl("/admin/login?error=true")
                 .and()
                 .logout()
                 .and()
-                /*.exceptionHandling().accessDeniedHandler(accessDeniedHandler)*/;
+                ;
     }
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

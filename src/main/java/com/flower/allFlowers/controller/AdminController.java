@@ -7,6 +7,8 @@ import com.flower.allFlowers.model.ResponseResult;
 import com.flower.allFlowers.services.AllFlowerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -44,28 +46,38 @@ public class AdminController extends  BaseController {
     }
 
     @RequestMapping(value="/login",method = RequestMethod.GET)
-    public ModelAndView  login(@RequestParam(value = "username") String account,
-                               @RequestParam(value = "password") String password){
-        ResponseResult result=userService.login(account,password);
-        if(result.getCode().equals("0")){
+    public ModelAndView  login(@RequestParam(value = "error",required = false) boolean error){
+        ModelAndView modelAndView=new ModelAndView("login");
 
-            ModelAndView modelAndView=  new ModelAndView("/total/list");
-            modelAndView.addObject(allFlowerService.queryAllFlower());
-            return  modelAndView;
-        }else {
-            ModelAndView modelAndView=new ModelAndView("/login");
-            modelAndView.addObject("param","error");
-            return  modelAndView;
-        }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                if(authentication!=null&&
+                                !authentication.getPrincipal().equals("anonymousUser")&&
+                                 authentication.isAuthenticated()) {
+                    ModelAndView model=new ModelAndView("total/list");
+                    modelAndView.addObject(allFlowerService.queryAllFlower());
+
+                    return modelAndView;
+                }
+                if(error==true){
+
+                    HashMap<String,Object> param=new HashMap<>();
+                    param.put("error",error);
+                    modelAndView.addObject(param);
+                    return  modelAndView;
+
+                }
+
+                return modelAndView;
+
 
 
 
     }
 
-    /*@GetMapping( "/login")
+    @GetMapping( "/toLogin")
     public  String login(){
         return  "/login";
-    }*/
+    }
     @GetMapping("/403")
     public String error403() {
         return "/error/403";
