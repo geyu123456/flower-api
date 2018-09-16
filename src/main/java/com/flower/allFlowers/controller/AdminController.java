@@ -45,7 +45,7 @@ public class AdminController extends  BaseController {
 
     }
 
-    @RequestMapping(value="/login",method = RequestMethod.GET)
+  /*  @RequestMapping(value="/login",method = RequestMethod.GET)
     public ModelAndView  login(@RequestParam(value = "error",required = false) boolean error){
         ModelAndView modelAndView=new ModelAndView("login");
 
@@ -53,10 +53,10 @@ public class AdminController extends  BaseController {
                 if(authentication!=null&&
                                 !authentication.getPrincipal().equals("anonymousUser")&&
                                  authentication.isAuthenticated()) {
-                    ModelAndView model=new ModelAndView("total/list");
-                    modelAndView.addObject(allFlowerService.queryAllFlower());
+                    ModelAndView model=new ModelAndView("allFlowers/allFlowersList");
+                    model.addObject(allFlowerService.queryAllFlower());
 
-                    return modelAndView;
+                    return model;
                 }
                 if(error==true){
 
@@ -72,9 +72,9 @@ public class AdminController extends  BaseController {
 
 
 
-    }
+    }*/
 
-    @GetMapping( "/toLogin")
+    @GetMapping( "/login")
     public  String login(){
         return  "/login";
     }

@@ -15,7 +15,7 @@ function  toAddFlower() {
 
 function saveFlower() {
         var form = new FormData(document.getElementById("commentForm"));
-        var url=contentPath+"/total/addFlower";
+        var url=contentPath+"/alice/total/addFlower";
     $.ajax({
         type:"POST",
         url:url,
@@ -32,3 +32,4 @@ function  deleteFlower(id) {
     alert(id)
 
 }
+

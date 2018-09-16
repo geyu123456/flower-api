@@ -1,6 +1,11 @@
 package com.flower.common.config.Security;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 
@@ -9,10 +14,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 @Component
-public class MyAuthenticationFailHandler extends SimpleUrlAuthenticationFailureHandler {
+@Slf4j
+public class MyAuthenticationFailHandler implements AccessDeniedHandler {
+
+
 
     @Override
-    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        super.onAuthenticationFailure(request, response, exception);
+    public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
+        Authentication auth
+                = SecurityContextHolder.getContext().getAuthentication();
+
+        if (auth != null) {
+            log.info("User '" + auth.getName()
+                    + "' attempted to access the protected URL: "
+                    + httpServletRequest.getRequestURI());
+        }
+
+        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/error/403");
     }
 }

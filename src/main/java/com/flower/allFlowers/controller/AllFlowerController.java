@@ -66,7 +66,7 @@ public class AllFlowerController extends  BaseController {
             String []lastName=request.getFile().getOriginalFilename().split("\\.");
             Date date=new Date();
             String fileName=String.valueOf(date.getTime()/1000)+"."+lastName[1];
-            String filePath = "D:\\imgDownload\\";
+            String filePath = "/opt/pictures/";
             try {
                 FileCopyUtils.copy(request.getFile().getInputStream(),new FileOutputStream(filePath+fileName));
                 request.setPicUrl(filePath+fileName);

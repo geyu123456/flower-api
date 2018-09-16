@@ -1,0 +1,92 @@
+2018-09-15 12:40:49.723  INFO 15908 --- [main] com.flower.AliceApplicationTests         : Starting AliceApplicationTests on DESKTOP-5NH886G with PID 15908 (started by gyu98 in E:\Projects\flower-api)
+2018-09-15 12:40:49.724  INFO 15908 --- [main] com.flower.AliceApplicationTests         : No active profile set, falling back to default profiles: default
+2018-09-15 12:40:50.375  INFO 15908 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@23e84203: startup date [Sat Sep 15 12:40:50 CST 2018]; root of context hierarchy
+2018-09-15 12:40:52.156  INFO 15908 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-09-15 12:40:54.122  INFO 15908 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2018-09-15 12:40:54.122  INFO 15908 --- [main] org.mongodb.driver.cluster               : Adding discovered server 127.0.0.1:27017 to client view of cluster
+2018-09-15 12:40:55.249  INFO 15908 --- [cluster-ClusterId{value='5b9c8d56b02da93e24ede9e8', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server 127.0.0.1:27017
+
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63) ~[mongodb-driver-core-3.4.3.jar:na]
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:115) ~[mongodb-driver-core-3.4.3.jar:na]
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:113) ~[mongodb-driver-core-3.4.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_161]
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method) ~[na:1.8.0_161]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85) ~[na:1.8.0_161]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_161]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_161]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_161]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.8.0_161]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_161]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_161]
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:57) ~[mongodb-driver-core-3.4.3.jar:na]
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58) ~[mongodb-driver-core-3.4.3.jar:na]
+	... 3 common frames omitted
+
+2018-09-15 12:40:55.271  INFO 15908 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5349b246, org.springframework.security.web.context.SecurityContextPersistenceFilter@216e9ca3, org.springframework.security.web.header.HeaderWriterFilter@63d4f0a2, org.springframework.security.web.authentication.logout.LogoutFilter@4784efd9, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@306f6f1d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@48976e6d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@38e7ed69, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@32b0876c, org.springframework.security.web.session.SessionManagementFilter@f5b6e78, org.springframework.security.web.access.ExceptionTranslationFilter@40e32762, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6a2c717f]
+2018-09-15 12:40:55.922  INFO 15908 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@23e84203: startup date [Sat Sep 15 12:40:50 CST 2018]; root of context hierarchy
+2018-09-15 12:40:56.001  INFO 15908 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.flower.allFlowers.controller.AdminController.login(java.lang.String,java.lang.String)
+2018-09-15 12:40:56.002  INFO 15908 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/403],methods=[GET]}" onto public java.lang.String com.flower.allFlowers.controller.AdminController.error403()
+2018-09-15 12:40:56.004  INFO 15908 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/addFlower],methods=[PUT]}" onto public com.flower.allFlowers.model.ResponseResult com.flower.allFlowers.controller.AdminController.addFlower(com.flower.allFlowers.model.FlowerRequest)
+2018-09-15 12:40:56.005  INFO 15908 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/findAllUser],methods=[GET]}" onto public java.util.List<com.flower.User.model.User> com.flower.allFlowers.controller.AdminController.findAllUser()
+2018-09-15 12:40:56.008  INFO 15908 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/total/list]}" onto public org.springframework.web.servlet.ModelAndView com.flower.allFlowers.controller.AllFlowerController.list()
+2018-09-15 12:40:56.008  INFO 15908 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/total/downloadImg],methods=[GET]}" onto public java.lang.String com.flower.allFlowers.controller.AllFlowerController.downloadImg(javax.servlet.http.HttpServletResponse,java.lang.String)
+2018-09-15 12:40:56.009  INFO 15908 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/total/deleteFlower],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.flower.allFlowers.controller.AllFlowerController.deleteFlower(java.lang.String)
+2018-09-15 12:40:56.009  INFO 15908 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/total/testQuery],methods=[GET]}" onto public java.util.List<com.flower.allFlowers.model.AllFlower> com.flower.allFlowers.controller.AllFlowerController.testQuery()
+2018-09-15 12:40:56.009  INFO 15908 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/total/festivalList]}" onto public org.springframework.web.servlet.ModelAndView com.flower.allFlowers.controller.AllFlowerController.festivalList(java.lang.String)
+2018-09-15 12:40:56.010  INFO 15908 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/total/addFlower],methods=[POST]}" onto public com.flower.allFlowers.model.ResponseResult com.flower.allFlowers.controller.AllFlowerController.addFlower(com.flower.allFlowers.model.FlowerRequest)
+2018-09-15 12:40:56.012  INFO 15908 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-09-15 12:40:56.012  INFO 15908 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-09-15 12:40:56.054  INFO 15908 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-15 12:40:56.055  INFO 15908 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-15 12:40:56.094  INFO 15908 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-15 12:40:56.955  INFO 15908 --- [main] com.flower.AliceApplicationTests         : Started AliceApplicationTests in 8.16 seconds (JVM running for 9.705)
+2018-09-15 12:40:57.134  INFO 15908 --- [main] org.mongodb.driver.cluster               : No server chosen by ReadPreferenceServerSelector{readPreference=primary} from cluster description ClusterDescription{type=UNKNOWN, connectionMode=MULTIPLE, serverDescriptions=[ServerDescription{address=127.0.0.1:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketOpenException: Exception opening socket}, caused by {java.net.ConnectException: Connection refused: connect}}]}. Waiting for 30000 ms before timing out
+2018-09-15 12:41:10.932  INFO 14708 --- [main] com.flower.AliceApplicationTests         : Starting AliceApplicationTests on DESKTOP-5NH886G with PID 14708 (started by gyu98 in E:\Projects\flower-api)
+2018-09-15 12:41:10.935  INFO 14708 --- [main] com.flower.AliceApplicationTests         : No active profile set, falling back to default profiles: default
+2018-09-15 12:41:11.130  INFO 14708 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@23e84203: startup date [Sat Sep 15 12:41:11 CST 2018]; root of context hierarchy
+2018-09-15 12:41:11.923  INFO 14708 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-09-15 12:41:13.651  INFO 14708 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2018-09-15 12:41:13.652  INFO 14708 --- [main] org.mongodb.driver.cluster               : Adding discovered server 127.0.0.1:27017 to client view of cluster
+2018-09-15 12:41:14.701  INFO 14708 --- [cluster-ClusterId{value='5b9c8d69b02da939743f1497', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server 127.0.0.1:27017
+
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63) ~[mongodb-driver-core-3.4.3.jar:na]
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:115) ~[mongodb-driver-core-3.4.3.jar:na]
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:113) ~[mongodb-driver-core-3.4.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_161]
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method) ~[na:1.8.0_161]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85) ~[na:1.8.0_161]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_161]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_161]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_161]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.8.0_161]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_161]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_161]
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:57) ~[mongodb-driver-core-3.4.3.jar:na]
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58) ~[mongodb-driver-core-3.4.3.jar:na]
+	... 3 common frames omitted
+
+2018-09-15 12:41:15.703  INFO 14708 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4397a639, org.springframework.security.web.context.SecurityContextPersistenceFilter@697a34af, org.springframework.security.web.header.HeaderWriterFilter@216e9ca3, org.springframework.security.web.authentication.logout.LogoutFilter@d1d8e1a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1df1ced0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4c5228e7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@69d23296, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@24841372, org.springframework.security.web.session.SessionManagementFilter@2a367e93, org.springframework.security.web.access.ExceptionTranslationFilter@63dfada0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@fe7b6b0]
+2018-09-15 12:41:16.205  INFO 14708 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@23e84203: startup date [Sat Sep 15 12:41:11 CST 2018]; root of context hierarchy
+2018-09-15 12:41:16.281  INFO 14708 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.flower.allFlowers.controller.AdminController.login(java.lang.String,java.lang.String)
+2018-09-15 12:41:16.283  INFO 14708 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/403],methods=[GET]}" onto public java.lang.String com.flower.allFlowers.controller.AdminController.error403()
+2018-09-15 12:41:16.285  INFO 14708 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/findAllUser],methods=[GET]}" onto public java.util.List<com.flower.User.model.User> com.flower.allFlowers.controller.AdminController.findAllUser()
+2018-09-15 12:41:16.285  INFO 14708 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/addFlower],methods=[PUT]}" onto public com.flower.allFlowers.model.ResponseResult com.flower.allFlowers.controller.AdminController.addFlower(com.flower.allFlowers.model.FlowerRequest)
+2018-09-15 12:41:16.290  INFO 14708 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/total/list]}" onto public org.springframework.web.servlet.ModelAndView com.flower.allFlowers.controller.AllFlowerController.list()
+2018-09-15 12:41:16.290  INFO 14708 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/total/downloadImg],methods=[GET]}" onto public java.lang.String com.flower.allFlowers.controller.AllFlowerController.downloadImg(javax.servlet.http.HttpServletResponse,java.lang.String)
+2018-09-15 12:41:16.291  INFO 14708 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/total/festivalList]}" onto public org.springframework.web.servlet.ModelAndView com.flower.allFlowers.controller.AllFlowerController.festivalList(java.lang.String)
+2018-09-15 12:41:16.291  INFO 14708 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/total/testQuery],methods=[GET]}" onto public java.util.List<com.flower.allFlowers.model.AllFlower> com.flower.allFlowers.controller.AllFlowerController.testQuery()
+2018-09-15 12:41:16.292  INFO 14708 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/total/addFlower],methods=[POST]}" onto public com.flower.allFlowers.model.ResponseResult com.flower.allFlowers.controller.AllFlowerController.addFlower(com.flower.allFlowers.model.FlowerRequest)
+2018-09-15 12:41:16.292  INFO 14708 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/total/deleteFlower],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.flower.allFlowers.controller.AllFlowerController.deleteFlower(java.lang.String)
+2018-09-15 12:41:16.294  INFO 14708 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-09-15 12:41:16.295  INFO 14708 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-09-15 12:41:16.328  INFO 14708 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-15 12:41:16.328  INFO 14708 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-15 12:41:16.370  INFO 14708 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-15 12:41:16.984  INFO 14708 --- [main] com.flower.AliceApplicationTests         : Started AliceApplicationTests in 6.462 seconds (JVM running for 7.276)
+2018-09-15 12:41:17.061  INFO 14708 --- [main] org.mongodb.driver.cluster               : No server chosen by ReadPreferenceServerSelector{readPreference=primary} from cluster description ClusterDescription{type=UNKNOWN, connectionMode=MULTIPLE, serverDescriptions=[ServerDescription{address=127.0.0.1:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketOpenException: Exception opening socket}, caused by {java.net.ConnectException: Connection refused: connect}}]}. Waiting for 30000 ms before timing out
+2018-09-15 12:41:27.200  INFO 15908 --- [Thread-2] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@23e84203: startup date [Sat Sep 15 12:40:50 CST 2018]; root of context hierarchy
+2018-09-15 12:41:47.092  INFO 14708 --- [Thread-2] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@23e84203: startup date [Sat Sep 15 12:41:11 CST 2018]; root of context hierarchy

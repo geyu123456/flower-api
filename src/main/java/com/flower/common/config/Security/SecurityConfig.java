@@ -15,7 +15,7 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private  MyAuthenticationFailHandler authenticationFailHandler;
+    private  MyAuthenticationFailHandler accessDeniedHandler;
     @Autowired
     private  MyAuthenticationSuccessHandler authenticationSuccessHandler;
 
@@ -25,19 +25,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/","/admin").permitAll()
+                .antMatchers("/css/**", "/js/**", "/fonts/**").permitAll()
                 .antMatchers("/total/**").access("hasRole('admin')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 //定义登录页面
-                .loginPage("/admin/toLogin").permitAll()
-                .loginProcessingUrl("/admin/login")
+                .loginPage("/admin/login").permitAll()
                 .defaultSuccessUrl("/total/list")
-                .failureForwardUrl("/admin/login?error=true")
                 .and()
                 .logout()
                 .and()
-                ;
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

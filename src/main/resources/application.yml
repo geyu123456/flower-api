@@ -9,6 +9,9 @@
      multipart:
        max-file-size: 100Mb
        max-request-size: 100Mb
+ server:
+   context-path: /alice
+
 
 
 
