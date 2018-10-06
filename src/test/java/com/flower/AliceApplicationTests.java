@@ -1,7 +1,7 @@
 package com.flower;
 
 import com.flower.allFlowers.model.AllFlower;
-import com.flower.mapper.AllFlowerMapper;
+import com.flower.allFlowers.mapper.AllFlowerMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

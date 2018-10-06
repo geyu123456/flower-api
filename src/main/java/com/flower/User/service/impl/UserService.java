@@ -4,7 +4,7 @@ package com.flower.User.service.impl;
 import com.flower.User.model.User;
 import com.flower.User.service.IUserService;
 import com.flower.allFlowers.model.ResponseResult;
-import com.flower.mapper.UserMapper;
+import com.flower.allFlowers.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.flower.mapper;
+package com.flower.allFlowers.mapper;
 
 import com.flower.common.mongodb.MyRepository;
 import com.flower.allFlowers.model.AllFlower;

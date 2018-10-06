@@ -1,7 +1,7 @@
 package com.flower.allFlowers.services;
 
 import com.flower.allFlowers.model.AllFlower;
-import com.flower.mapper.AllFlowerMapper;
+import com.flower.allFlowers.mapper.AllFlowerMapper;
 import com.flower.allFlowers.model.FlowerRequest;
 import com.flower.allFlowers.model.ResponseResult;
 import lombok.extern.slf4j.Slf4j;

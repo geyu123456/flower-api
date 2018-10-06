@@ -42,6 +42,7 @@ public class AllFlowerController extends  BaseController {
         ModelAndView modelAndView=new ModelAndView("allFlowers/allFlowersList");
         List<AllFlower> list=allFlowerService.queryAllFlower();
         modelAndView.addObject("list",list);
+        log.info("query all flowers!");
         return  modelAndView;
     }
     @RequestMapping(value = "/festivalList")
