@@ -45,41 +45,6 @@ public class AdminController extends  BaseController {
 
     }
 
-  /*  @RequestMapping(value="/login",method = RequestMethod.GET)
-    public ModelAndView  login(@RequestParam(value = "error",required = false) boolean error){
-        ModelAndView modelAndView=new ModelAndView("login");
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-                if(authentication!=null&&
-                                !authentication.getPrincipal().equals("anonymousUser")&&
-                                 authentication.isAuthenticated()) {
-                    ModelAndView model=new ModelAndView("allFlowers/allFlowersList");
-                    model.addObject(allFlowerService.queryAllFlower());
-
-                    return model;
-                }
-                if(error==true){
-
-                    HashMap<String,Object> param=new HashMap<>();
-                    param.put("error",error);
-                    modelAndView.addObject(param);
-                    return  modelAndView;
-
-                }
-
-                return modelAndView;
 
 
-
-
-    }*/
-
-    @GetMapping( "/login")
-    public  String login(){
-        return  "/login";
-    }
-    @GetMapping("/403")
-    public String error403() {
-        return "/error/403";
-    }
 }

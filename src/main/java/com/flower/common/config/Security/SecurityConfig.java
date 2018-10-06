@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 //定义登录页面
-                .loginPage("/admin/login").permitAll()
+                .loginPage("/login").permitAll()
                 .defaultSuccessUrl("/total/list")
                 .and()
                 .logout()
