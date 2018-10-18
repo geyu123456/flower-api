@@ -30,6 +30,6 @@ public class MyAuthenticationFailHandler implements AccessDeniedHandler {
                     + httpServletRequest.getRequestURI());
         }
 
-        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/error/error");
+        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/error");
     }
 }

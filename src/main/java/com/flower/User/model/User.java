@@ -15,6 +15,4 @@ public class User  {
     private  boolean enabled;
     private List<String> roles;
 
-
-
 }

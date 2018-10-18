@@ -1,6 +1,6 @@
 package com.flower.common.config.Security;
 
-import com.flower.User.model.User;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -52,7 +52,7 @@ public class JwtUser  implements UserDetails {
      */
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     /**
@@ -61,7 +61,7 @@ public class JwtUser  implements UserDetails {
      */
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     /**
