@@ -15,4 +15,5 @@ public interface AllFlowerMapper extends MyRepository<AllFlower,Long> {
        void deleteById(String id);
 
        List<AllFlower> findByFestival(String festival);
+       List<AllFlower> findAllFlowerByType(String type);
 }
